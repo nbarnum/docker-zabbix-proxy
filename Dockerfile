@@ -1,11 +1,11 @@
-# Zabbix version 2.2.9
+# Zabbix version 2.4.5
 
 # Pull base image
 FROM ubuntu:14.04
 
 MAINTAINER Nickolai Barnum <nbarnum@users.noreply.github.com>
 
-ENV ZABBIX_VERSION 2.2
+ENV ZABBIX_VERSION 2.4
 
 # Install Zabbix and dependencies
 RUN \
