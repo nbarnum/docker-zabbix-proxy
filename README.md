@@ -4,7 +4,7 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
 
 ### Base Docker Image
 
-* [dockerfile/ubuntu](http://dockerfile.github.io/#/ubuntu)
+* [ubuntu:14.04](https://registry.hub.docker.com/_/ubuntu/)
 
 ### Installation
 
