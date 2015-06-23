@@ -51,6 +51,11 @@ do
   shift # past argument or value
 done
 
+# Default to "run" if none was provided
+if [ -z "$MONIT_CMD" ]; then
+    MONIT_CMD="run"
+fi
+
 if [ -z "$ZABBIX_SERVER" ]; then
     echo "ERROR: missing -z or --zabbix-server option"
     usage
