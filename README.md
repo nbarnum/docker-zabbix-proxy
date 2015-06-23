@@ -18,8 +18,7 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
 
 #### Run `zabbix_proxy`
 
-    docker run -d \
-               --name zabbix-proxy \
+    docker run -d --name zabbix-proxy \
                -p 10051:10051 nbarnum/zabbix-proxy \
                               -z <zabbix server ip> \
                               -s <proxy hostname to use> \
@@ -28,3 +27,14 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
 #### Explore running container
 
     docker exec -it zabbix-proxy bash
+
+#### sysctl
+
+In order to tune the Docker host housing Zabbix proxy containers, consider applying the following `sysctl` settings:
+
+```
+kernel.shmall = 4194304
+kernel.shmmax = 17179869184
+kernel.shmmni = 4096
+kernel.sem = 250 32000 100 128
+```
