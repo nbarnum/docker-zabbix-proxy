@@ -21,8 +21,7 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
     docker run -d --name zabbix-proxy \
                -p 10051:10051 nbarnum/zabbix-proxy \
                               -z <zabbix server ip> \
-                              -s <proxy hostname to use> \
-                              -m run
+                              -s <proxy hostname to use>
 
 #### Explore running container
 
