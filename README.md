@@ -18,10 +18,18 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
 
 #### Run `zabbix_proxy`
 
-    docker run -d --name zabbix-proxy \
-               -p 10051:10051 nbarnum/zabbix-proxy \
-                              -z <zabbix server ip> \
-                              -s <proxy hostname to use>
+    $ docker run -d --name zabbix-proxy -p 10051:10051 \
+                 nbarnum/zabbix-proxy -z <zabbix server ip> -s <proxy hostname to use>
+
+Usage:
+
+    REQUIRED:
+      -s, --host           Zabbix hostname to use for Zabbix proxy and agent (Hostname= in conf).
+      -z, --zabbix-server  Zabbix server IP or DNS name (Server= in zabbix_proxy.conf).
+    OPTIONAL:
+      -m, --monit          Command to pass to Monit {start|stop|restart|shell|status|summary}. Default: run
+      -p, --port           Zabbix server port to send to (ServerPort= in zabbix_proxy.conf). Default: 10051
+
 
 #### Explore running container
 
