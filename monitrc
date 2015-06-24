@@ -1,10 +1,5 @@
 set init
 
-check process zabbix-agent with pidfile /var/run/zabbix/zabbix_agentd.pid
-  every 2 cycles
-	start program = "/usr/sbin/service zabbix-agent start"
-	stop program = "/usr/sbin/service zabbix-agent stop"
-
 check process zabbix-proxy with pidfile /var/run/zabbix/zabbix_proxy.pid
   every 2 cycles
 	start program = "/usr/sbin/service zabbix-proxy start"
