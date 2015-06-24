@@ -26,7 +26,6 @@ RUN \
 # Copy scripts, Monit config and Zabbix config into place
 COPY monitrc                     /etc/monit/monitrc
 COPY ./scripts/entrypoint.sh     /bin/docker-zabbix
-COPY ./zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf
 COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 
 # Fix permissions
