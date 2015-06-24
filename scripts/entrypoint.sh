@@ -4,10 +4,10 @@ usage () {
     echo "usage: $0 [OPTIONS]"
     echo "Options:"
     echo "  REQUIRED:"
-    echo "    -m, --monit          Command to pass to Monit {start|stop|restart|shell|status|summary}"
     echo "    -s, --host           Zabbix hostname to use for Zabbix proxy and agent (Hostname= in conf)."
     echo "    -z, --zabbix-server  Zabbix server IP or DNS name (Server= in zabbix_proxy.conf)."
     echo "  OPTIONAL:"
+    echo "    -m, --monit          Command to pass to Monit {start|stop|restart|shell|status|summary}. Default: run"
     echo "    -p, --port           Zabbix server port to send to (ServerPort= in zabbix_proxy.conf). Defaults to 10051."
 }
 

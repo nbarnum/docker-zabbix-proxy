@@ -9,12 +9,13 @@ ENV ZABBIX_VERSION 2.2
 
 # Install Zabbix and dependencies
 RUN \
-  apt-get update && apt-get install -y wget && \
+  apt-get update && apt-get install -y software-properties-common wget && \
   wget http://repo.zabbix.com/zabbix/${ZABBIX_VERSION}/ubuntu/pool/main/z/zabbix-release/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb \
        -O /tmp/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb  && \
   dpkg -i /tmp/zabbix-release_${ZABBIX_VERSION}-1+trusty_all.deb && \
-  apt-get update && \
+  apt-add-repository multiverse && apt-get update && \
   apt-get install -y monit \
+                     snmp-mibs-downloader \
                      zabbix-agent \
                      zabbix-get \
                      zabbix-proxy-sqlite3 \
