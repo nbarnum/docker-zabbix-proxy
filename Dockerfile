@@ -16,7 +16,6 @@ RUN \
   apt-add-repository multiverse && apt-get update && \
   apt-get install -y monit \
                      snmp-mibs-downloader \
-                     zabbix-agent \
                      zabbix-get \
                      zabbix-proxy-sqlite3 \
                      zabbix-sender && \
@@ -40,6 +39,6 @@ RUN chmod 755 /bin/docker-zabbix && \
 EXPOSE 10051
 
 # Will run `/bin/docker run`, which instructs
-# monit to start zabbix_proxy and zabbix_agentd.
+# monit to start zabbix_proxy.
 ENTRYPOINT ["/bin/docker-zabbix"]
 CMD ["run"]
