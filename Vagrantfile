@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+CONTAINER_NAME = 'zabbix-proxy'
+ZABBIX_SERVER = '10.1.1.10'
+
 Vagrant.configure(2) do |config|
   # config.vm.box = 'ubuntu/trusty64'
   # This box has docker preinstalled. Something like ubuntu/trusty64 can be used,
@@ -14,14 +17,12 @@ Vagrant.configure(2) do |config|
     vb.memory = '1024'
   end
 
-  config.vm.synced_folder '.', '/home/vagrant/docker-zabbix-proxy'
-
   config.vm.provision 'docker' do |d|
-    d.build_image '/home/vagrant/docker-zabbix-proxy',
-                  args: '-t nbarnum/zabbix-proxy'
+    d.build_image '/vagrant',
+                  args: "-t nbarnum/#{CONTAINER_NAME}"
 
-    d.run 'nbarnum/zabbix-proxy',
-          args: '--name zabbix-proxy',
-          cmd: '-z 127.0.0.1 -s docker-proxy'
+    d.run "nbarnum/#{CONTAINER_NAME}",
+          args: "--name #{CONTAINER_NAME}",
+          cmd: "-z #{ZABBIX_SERVER} -s #{CONTAINER_NAME}"
   end
 end
