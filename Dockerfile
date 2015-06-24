@@ -16,7 +16,6 @@ RUN \
   apt-add-repository multiverse && apt-get update && \
   apt-get install -y monit \
                      snmp-mibs-downloader \
-                     zabbix-agent \
                      zabbix-get \
                      zabbix-proxy-sqlite3 \
                      zabbix-sender && \
@@ -27,7 +26,6 @@ RUN \
 # Copy scripts, Monit config and Zabbix config into place
 COPY monitrc                     /etc/monit/monitrc
 COPY ./scripts/entrypoint.sh     /bin/docker-zabbix
-COPY ./zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf
 COPY ./zabbix/zabbix_proxy.conf  /etc/zabbix/zabbix_proxy.conf
 
 # Fix permissions
@@ -40,6 +38,6 @@ RUN chmod 755 /bin/docker-zabbix && \
 EXPOSE 10051
 
 # Will run `/bin/docker run`, which instructs
-# monit to start zabbix_proxy and zabbix_agentd.
+# monit to start zabbix_proxy.
 ENTRYPOINT ["/bin/docker-zabbix"]
 CMD ["run"]

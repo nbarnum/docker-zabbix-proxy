@@ -4,7 +4,7 @@ usage () {
     echo "usage: $0 [OPTIONS]"
     echo "Options:"
     echo "  REQUIRED:"
-    echo "    -s, --host           Zabbix hostname to use for Zabbix proxy and agent (Hostname= in conf)."
+    echo "    -s, --host           Zabbix hostname to use for Zabbix proxy (Hostname= in conf)."
     echo "    -z, --zabbix-server  Zabbix server IP or DNS name (Server= in zabbix_proxy.conf)."
     echo "  OPTIONAL:"
     echo "    -m, --monit          Command to pass to Monit {start|stop|restart|shell|status|summary}. Default: run"
@@ -69,13 +69,13 @@ if [ -z "$ZABBIX_HOSTNAME" ]; then
     usage
     exit 1
 else
-    sed -i "s/ZABBIX_HOSTNAME/$ZABBIX_HOSTNAME/g" /etc/zabbix/zabbix_*.conf
+    sed -i "s/ZABBIX_HOSTNAME/$ZABBIX_HOSTNAME/g" /etc/zabbix/zabbix_proxy.conf
 fi
 
 # We either use the default or what was passed in
 sed -i "s/ZABBIX_PORT/$ZABBIX_PORT/g" /etc/zabbix/zabbix_proxy.conf
 
-# Start Zabbix proxy and agent with monit
+# Start Zabbix proxy with monit
 # https://github.com/berngp/docker-zabbix/blob/master/scripts/entrypoint.sh
 _cmd="/usr/bin/monit -d 10 -Ic /etc/monit/monitrc"
 _shell="/bin/bash"
