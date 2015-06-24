@@ -24,7 +24,7 @@ This repository contains **Dockerfile** of [Zabbix proxy](http://www.zabbix.com/
 Usage:
 
     REQUIRED:
-      -s, --host           Zabbix hostname to use for Zabbix proxy and agent (Hostname= in conf).
+      -s, --host           Zabbix hostname to use for Zabbix proxy (Hostname= in conf).
       -z, --zabbix-server  Zabbix server IP or DNS name (Server= in zabbix_proxy.conf).
     OPTIONAL:
       -m, --monit          Command to pass to Monit {start|stop|restart|shell|status|summary}. Default: run
@@ -45,3 +45,14 @@ kernel.shmmax = 17179869184
 kernel.shmmni = 4096
 kernel.sem = 250 32000 100 128
 ```
+
+### Tags
+
+Tags correspond to the version of Zabbix that is installed. Currently the following tags are included:
+
+| Docker Tag | Zabbix version | Zabbix release date |
+|:----------:|:--------------:|:-------------------:|
+| latest     | 2.4.5          | 21 April 2015       |
+| 2.4.5      | 2.4.5          | 21 April 2015       |
+| 2.2.9      | 2.2.9          | 12 March 2015       |
+| 2.0.14     | 2.0.14         | 15 December 2014    |
